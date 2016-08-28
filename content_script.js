@@ -6,14 +6,8 @@ jQuery(document).ready(function(){
   }
 
   var element = localStorage.getItem(tabUrl);
-  console.log(element);
-  /*chrome.storage.local.get(tabUrl, function(result) {
-    console.log(tabUrl);
-    console.log(result.tabUrl);
-    if ($(result) != undefined) {
-      console.log(tabUrl.result);
-      $(result).focus();
-      console.log("FOCUSED on " + result);
-    }
-  });*/
+  if (element != undefined) {
+    $(element).focus();
+    console.log("SetFocus focused on element " + element);
+  }
 });

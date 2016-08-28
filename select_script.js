@@ -14,7 +14,7 @@ jQuery(document).ready(function(){
     $("body *").click(function() {
       if (selectingElement) {
         selectingElement = false;
-        addWebsite($(this).getSelector()); // Save to JSON
+        addWebsite($(this).getSelector().toString()); // Save to JSON
       }
     });
 });
@@ -27,6 +27,7 @@ function addWebsite(element) {
     tabUrl = tabUrl.substr(0, getIndex);
   }
 
+  element = element.replace(/\.hover/g, ""); // Remove hover class
   localStorage.setItem(tabUrl, element);
 }
 
