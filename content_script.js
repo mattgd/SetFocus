@@ -1,20 +1,19 @@
-var selectingElement = false;
-
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-    console.log("HERERERE2222");
-    if (message.text == "select-element") {
-      console.log("HERERERE");
-      selectElement();
-    }
-});
-
-function selectElement() {
-  selectingElement = !selectingElement;
-}
-
-$( "body *" ).mouseover(function() {
-  console.log("HERE");
-  if (selectingElement) {
-    $(this).css('border', '1px solid #F00');
+jQuery(document).ready(function(){
+  var tabUrl = window.location.href;
+  var getIndex = tabUrl.indexOf("?");
+  if (getIndex > -1) {
+    tabUrl = tabUrl.substr(0, getIndex);
   }
+
+  var element = localStorage.getItem(tabUrl);
+  console.log(element);
+  /*chrome.storage.local.get(tabUrl, function(result) {
+    console.log(tabUrl);
+    console.log(result.tabUrl);
+    if ($(result) != undefined) {
+      console.log(tabUrl.result);
+      $(result).focus();
+      console.log("FOCUSED on " + result);
+    }
+  });*/
 });
