@@ -1,19 +1,15 @@
 var selectingElement = true;
 
-// Toggles the selecting an element state
-function selectElement() {
-  selectingElement = !selectingElement;
-}
-
 jQuery(document).ready(function(){
     $("body *").hover(function() {
       if (selectingElement)
-        $(this).toggleClass("hover");
+        $(this).toggleClass("set-focus-hover");
     });
 
     $("body *").click(function() {
       if (selectingElement) {
         selectingElement = false;
+        $("body *").removeClass("set-focus-hover"); // Remove class from all elements
         addWebsite($(this).getSelector().toString()); // Save to JSON
       }
     });
@@ -27,8 +23,9 @@ function addWebsite(element) {
     tabUrl = tabUrl.substr(0, getIndex);
   }
 
-  element = element.replace(/\.hover/g, ""); // Remove hover class
+  element = element.replace(/\.set-focus-hover/g, ""); // Remove set-focus-hover class
   localStorage.setItem(tabUrl, element);
+  console.log("Added default focus element for " + tabUrl);
 }
 
 // Created by Will - Last updated January 2014
