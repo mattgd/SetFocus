@@ -2,18 +2,14 @@
 <html>
   <head>
     <title>SetFocus</title>
-    <style>
-      body {
-        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-        font-size: 100%;
-      }
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="popup.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
   </head>
   <body>
     <div id="status"></div>
-    <button type="button" id="selectElement">Set Focus Element</button>
-    <button type="button" id="removeElement">Remove Focus Element</button>
+    <button type="button" class="set-focus-button set" id="selectElement">Set Focus Element</button>
+    <button type="button" class="set-focus-button remove" id="removeElement">Remove Focus Element</button>
+    <script type="text/javascript" src="focuslist.js"></script>
   </body>
 </html>

@@ -1,3 +1,21 @@
 .set-focus-hover {
   border: 1px solid #F00;
 }
+.set-focus-button {
+  border: 0;
+  padding: 5px;
+  color: #FFF;
+  margin: 3px;
+  border-radius: 3px;
+}
+.set-focus-button:hover {
+  cursor: pointer;
+}
+.set-focus-button.set {
+  background: #337ab7;
+  border: 1px solid rgb(46, 109, 164);
+}
+.set-focus-button.remove {
+  background: #d9534f;
+  border: 1px solid rgb(212, 63, 58);
+}
