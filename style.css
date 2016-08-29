@@ -15,7 +15,22 @@
   background: #337ab7;
   border: 1px solid rgb(46, 109, 164);
 }
+.set-focus-button.set:hover {
+  background-color: #286090;
+  border-color: #204d74;
+}
 .set-focus-button.remove {
   background: #d9534f;
   border: 1px solid rgb(212, 63, 58);
+}
+.set-focus-button.remove:hover {
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+.focus-website p, .focus-website a, .focus-website button {
+  display: inline-block !important;
+  margin: 0;
+}
+.focus-website p {
+  width: 75%;
 }
