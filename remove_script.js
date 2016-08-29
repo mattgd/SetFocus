@@ -5,6 +5,8 @@ jQuery(document).ready(function(){
     tabUrl = tabUrl.substr(0, getIndex);
   }
 
-  localStorage.removeItem(tabUrl);
-  console.log("Focus element removed for " + tabUrl);
+  // Remove the value from Chrome's sync storage
+  chrome.storage.sync.remove(tabUrl, function(){
+    console.log("Focus element removed for " + tabUrl);
+  });
 });

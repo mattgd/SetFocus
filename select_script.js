@@ -24,8 +24,14 @@ function addWebsite(element) {
   }
 
   element = element.replace(/\.set-focus-hover/g, ""); // Remove set-focus-hover class
-  localStorage.setItem(tabUrl, element);
-  console.log("Added default focus element for " + tabUrl);
+  var storage = chrome.storage.sync;
+  var obj = {};
+  obj[tabUrl] = element;
+
+  // Set the value in Chrome's sync storage
+  storage.set(obj, function(){
+    console.log("Added default focus element for " + tabUrl);
+  });
 }
 
 // Created by Will - Last updated January 2014

@@ -5,9 +5,12 @@ jQuery(document).ready(function(){
     tabUrl = tabUrl.substr(0, getIndex);
   }
 
-  var element = localStorage.getItem(tabUrl);
-  if (element != undefined) {
-    $(element).focus();
-    console.log("SetFocus focused on element " + element);
-  }
+  // Get the value from Chrome's sync storage and focus on the element
+  chrome.storage.sync.get(tabUrl, function(items) {
+    var element = items[tabUrl];
+    if (element != undefined) {
+      $(element).focus();
+      console.log("SetFocus focused on element " + element);
+    }
+  });
 });
