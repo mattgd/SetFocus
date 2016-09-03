@@ -1,3 +1,6 @@
+body {
+  min-width: 324px;
+}
 .set-focus-hover {
   border: 1px solid #F00;
 }
