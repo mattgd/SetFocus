@@ -27,6 +27,9 @@
   background-color: #c9302c;
   border-color: #ac2925;
 }
+.table {
+  margin: 10px;
+}
 .focus-website p, .focus-website a, .focus-website button {
   display: inline-block !important;
   margin: 0;
