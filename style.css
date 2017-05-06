@@ -1,3 +1,6 @@
+/*
+* SetFocus popup and element selection styling.
+*/
 body {
   min-width: 324px;
 }
@@ -32,11 +35,4 @@ body {
 }
 .table {
   margin: 10px;
-}
-.focus-website p, .focus-website a, .focus-website button {
-  display: inline-block !important;
-  margin: 0;
-}
-.focus-website p {
-  width: 75%;
 }

@@ -1,12 +1,16 @@
-jQuery(document).ready(function(){
-  var tabUrl = window.location.href;
-  var getIndex = tabUrl.indexOf("?");
-  if (getIndex > -1) {
-    tabUrl = tabUrl.substr(0, getIndex);
-  }
+/**
+* Removes extraneous GET parameters from the URL if necessary, and
+* removes the current page's focus element setting from the Chrome sync storage.
+*/
+jQuery(document).ready(function() {
+    var tab_url = window.location.href;
+    
+    var get_index = tab_url.indexOf("?");
+    if (get_index > -1) {
+        tab_url = tab_url.substr(0, get_index);
+    }
 
-  // Remove the value from Chrome's sync storage
-  chrome.storage.sync.remove(tabUrl, function(){
-    console.log("Focus element removed for " + tabUrl);
-  });
+    chrome.storage.sync.remove(tab_url, function() {
+        console.log("Focus element removed for " + tab_url);
+    });
 });

@@ -1,40 +1,51 @@
 var selectingElement = true;
 
+/**
+* Adds the "set-focus-hover" class to all elements
+* on hover when selection mode is enabled.
+*/
 jQuery(document).ready(function(){
     $("body *").hover(function() {
-      if (selectingElement)
-        $(this).toggleClass("set-focus-hover");
+        if (selectingElement) {
+            $(this).toggleClass("set-focus-hover");
+        }
     });
 
     $("body *").click(function() {
-      if (selectingElement) {
-        selectingElement = false;
-        $("body *").removeClass("set-focus-hover"); // Remove class from all elements
-        addWebsite($(this).getSelector().toString()); // Save to JSON
-      }
+        if (selectingElement) {
+            selectingElement = false;
+            $("body *").removeClass("set-focus-hover"); // Remove class from all elements
+            addWebsite($(this).getSelector().toString()); // Save to JSON
+        }
     });
 });
 
-// Save default focused element data using the Chrome extension storage API
+/**
+* Save default focused element data using the Chrome extension storage API.
+*/
 function addWebsite(element) {
-  var tabUrl = window.location.href;
-  var getIndex = tabUrl.indexOf("?");
-  if (getIndex > -1) {
-    tabUrl = tabUrl.substr(0, getIndex);
-  }
+    var tab_url = window.location.href;
 
-  element = element.replace(/\.set-focus-hover/g, ""); // Remove set-focus-hover class
-  var storage = chrome.storage.sync;
-  var obj = {};
-  obj[tabUrl] = element;
+    var get_index = tab_url.indexOf("?");
+    if (get_index > -1) {
+        tab_url = tab_url.substr(0, get_index);
+    }
 
-  // Set the value in Chrome's sync storage
-  storage.set(obj, function(){
-    console.log("Added default focus element for " + tabUrl);
-  });
+    element = element.replace(/\.set-focus-hover/g, ""); // Remove set-focus-hover class
+    var storage = chrome.storage.sync;
+    var obj = {};
+    obj[tab_url] = element;
+
+    // Set the value in Chrome's sync storage
+    storage.set(obj, function() {
+        console.log("Added default focus element for " + tab_url);
+    });
 }
 
-// Created by Will - Last updated January 2014
+/**
+* Code for getting the selector of an HTML tag.
+* Created by Will - Last updated January 2014
+*/
 !(function ($, undefined) {
     var get_selector = function (element) {
         var pieces = [];
